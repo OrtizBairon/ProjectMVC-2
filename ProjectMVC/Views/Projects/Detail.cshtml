@@ -1,11 +1,33 @@
-﻿@model ProjectMVC.Models.ViewModels.CreateViewModel
+﻿@model ProjectMVC.LOGICA.Models.ViewModels.ProjectsDetailsViewModels
 @{
-                /**/
-
-                ViewBag.Title = "Show";
+    ViewBag.Title = "Detail";
 }
 
-<h2>Show</h2>
+@*//ProjectsBindingModel*@
+<h2>Details</h2>
 
-<label>Name:</label>
-<input type="text" name="Name" value="@Model.Name" />
+<table class="table table-bordered table-responsive">
+    <tr>
+        <td>@Html.DisplayNameFor(Model => Model.Title)</td>
+        <td>@Html.DisplayNameFor(Model => Model.Details)</td>
+        <td>@Html.DisplayNameFor(Model => Model.ExpectedCompletionDate)</td>
+        <td>@Html.DisplayNameFor(Model => Model.CreatedAt)</td>
+        <td>@Html.DisplayNameFor(Model => Model.UpdatedAt)</td>
+    </tr>
+
+    <tr>
+        <td>@Html.DisplayFor(model => Model.Title)</td>
+        <td>@Html.DisplayFor(model => Model.Details)</td>
+        <td>@Html.DisplayFor(model => Model.ExpectedCompletionDate)</td>
+        <td>@Html.DisplayFor(model => Model.CreatedAt)</td>
+        <td> @Html.DisplayFor(model => Model.UpdatedAt)</td>
+    </tr>
+</table>
+
+@Html.ActionLink(" ",
+"Index",
+"Projects",
+null,
+new { @class = "btn btn-outline-primary fas fa-arrow-circle-left" })
+
+

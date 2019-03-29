@@ -1,7 +1,32 @@
-﻿
-@{
-    ViewBag.Title = "Index";
-}
+﻿@model IEnumerable<ProjectMVC.LOGICA.Models.ViewModels.ProjectsIndexViewModels>
+    @{
+        ViewBag.Title = "Index";
+    }
 
-@Html.ActionLink("New","Create","Projects", null, new { @class = " btn btn-outline-danger " })
+    @Html.ActionLink(" ", "Create", "Projects", null, new { @class = " btn btn-outline-primary fas fa-plus-circle" })
 
+    <table class="table table-bordered table-responsive ">
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.Title)</td>
+            <td>@Html.DisplayNameFor(model => model.Details)</td>
+            <td>@Html.DisplayNameFor(model => model.ExpectedCompletionDate)</td>
+            <td>@Html.DisplayNameFor(model => model.CreatedAt)</td>
+            <td>@Html.DisplayNameFor(model => model.UpdatedAt)</td>
+        </tr>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@Html.DisplayFor(model => item.Title)</td>
+            <td>@Html.DisplayFor(model => item.Details)</td>
+            <td>@Html.DisplayFor(model => item.ExpectedCompletionDate)</td>
+            <td>@Html.DisplayFor(model => item.CreatedAt)</td>
+            <td>@Html.DisplayFor(model => item.UpdatedAt)</td>
+            <td>
+                @Html.ActionLink(" ", "Edit", "Projects", new { id = item.Id }, new { @class = "btn btn-primary btn-sm fas fa-edit" })
+                @Html.ActionLink(" ", "Detail", "Projects", new { id = item.Id }, new { @class = "btn btn-success btn-sm fas fa-info-circle" })
+                @Html.ActionLink(" ", "Delete", "Projects", new { id = item.Id }, new { @class = "btn btn-danger btn-sm fas fa-trash" })
+            </td>
+        </tr>
+        }
+
+    </table>

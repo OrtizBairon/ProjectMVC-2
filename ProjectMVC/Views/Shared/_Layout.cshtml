@@ -34,11 +34,15 @@
                 @if (Request.IsAuthenticated)
                 {
                     @*<a href="#" class="list-group-item list-group-item-action bg-light">Projects</a>*@
-                    @Html.ActionLink("Projects","Index","Projects", null, new { @class = "list-group-item list-group-item-action bg-light" })
+                    @Html.ActionLink("Projects", "Index", "Projects", null, new { @class = "list-group-item list-group-item-action bg-light" })
 
 
                     if (User.IsInRole("Admin"))
                     {
+                        @Html.ActionLink("Activities", "Index", "Activities", null, new { @class = "list-group-item list-group-item-action bg-light" })
+                        @Html.ActionLink("States", "Index", "States", null, new { @class = "list-group-item list-group-item-action bg-light" })
+                        @Html.ActionLink("Priorities", "Index", "Priorities", null, new { @class = "list-group-item list-group-item-action bg-light" })
+
                         @Html.ActionLink("RolesAdmin", "Index", "RolesAdmin", routeValues: null, htmlAttributes: new { @class = "list-group-item list-group-item-action bg-light" })
                         @Html.ActionLink("UsersAdmin", "Index", "UsersAdmin", routeValues: null, htmlAttributes: new { @class = "list-group-item list-group-item-action bg-light" })
                     }

@@ -25,6 +25,7 @@
                 @Html.ActionLink(" ", "Edit", "Projects", new { id = item.Id }, new { @class = "btn btn-primary btn-sm fas fa-edit" })
                 @Html.ActionLink(" ", "Detail", "Projects", new { id = item.Id }, new { @class = "btn btn-success btn-sm fas fa-info-circle" })
                 @Html.ActionLink(" ", "Delete", "Projects", new { id = item.Id }, new { @class = "btn btn-danger btn-sm fas fa-trash" })
+                @Html.ActionLink(" ", "Index", "Tasks", new { projectId = item.Id }, new { @class = "btn btn-danger btn-sm fas fa-tasks" })
             </td>
         </tr>
         }

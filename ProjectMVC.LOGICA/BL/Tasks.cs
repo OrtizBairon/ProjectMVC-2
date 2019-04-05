@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ProjectMVC.LOGICA.BL
@@ -60,6 +61,51 @@ namespace ProjectMVC.LOGICA.BL
                 listTasks = listTasks.Where(x => x.Id == Id).ToList();
 
             return listTasks;
+        }
+
+        /// <summary>
+        /// CREATE TASKS
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="details"></param>
+        /// <param name="expirationDate"></param>
+        /// <param name="isCompleted"></param>
+        /// <param name="effort"></param>
+        /// <param name="remainingWork"></param>
+        /// <param name="statedId"></param>
+        /// <param name="activityId"></param>
+        /// <param name="priorityId"></param>
+        /// <param name="projectId"></param>
+        ///
+
+        public void CreateTasks(string title,
+            string details,
+            DateTime? expirationDate,
+            bool isCompleted,
+            int? effort,
+            int? remainingWork,
+            int? statedId,
+            int? activityId,
+            int? priorityId,
+            int? projectId)
+        {
+            DAL.Models.PROJECTMVCEntities _context = new DAL.Models.PROJECTMVCEntities();
+
+            _context.Tasks.Add(new DAL.Models.Tasks
+            {
+                Title = title,
+                Details = details,
+                ExpirationDate = expirationDate,
+                IsCompleted = isCompleted,
+                Effort = effort,
+                RemainingWork = remainingWork,
+                StateId = statedId,
+                ActivityId = activityId,
+                PriorityId = priorityId,
+                ProjectId = projectId
+            });
+
+            _context.SaveChanges();
         }
     }
 }

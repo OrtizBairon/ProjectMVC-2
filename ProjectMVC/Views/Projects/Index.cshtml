@@ -3,10 +3,14 @@
         ViewBag.Title = "Index";
     }
 
+     <h2>Projects</h2>
+
     @Html.ActionLink(" ", "Create", "Projects", null, new { @class = " btn btn-outline-primary fas fa-plus-circle" })
 
     <table class="table table-bordered table-responsive ">
         <tr>
+
+            <td>Tasks</td>
             <td>@Html.DisplayNameFor(model => model.Title)</td>
             <td>@Html.DisplayNameFor(model => model.Details)</td>
             <td>@Html.DisplayNameFor(model => model.ExpectedCompletionDate)</td>
@@ -16,6 +20,10 @@
         @foreach (var item in Model)
         {
         <tr>
+
+            <td>
+                @Html.ActionLink(" ", "Index", "Tasks", new { projectId = item.Id }, new { @class = "btn btn-danger btn-sm fas fa-tasks" })           
+            </td>
             <td>@Html.DisplayFor(model => item.Title)</td>
             <td>@Html.DisplayFor(model => item.Details)</td>
             <td>@Html.DisplayFor(model => item.ExpectedCompletionDate)</td>

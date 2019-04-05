@@ -29,9 +29,11 @@ namespace ProjectMVC.Controllers
 
 
             }).ToList();
-    
 
-            ViewBag.projectId = projectId;
+            LOGICA.BL.Projects projects = new LOGICA.BL.Projects();
+            var project = projects.GetProjects(projectId, null).FirstOrDefault();
+
+            ViewBag.project = project;
 
             return View(listTasksViewModel);
         }
@@ -54,6 +56,38 @@ namespace ProjectMVC.Controllers
             ViewBag.Priorities = priorities.GetPriorities();
 
             return View(tasksBindingModel);
+        }
+
+        [HttpPost]
+        public ActionResult Create(LOGICA.Models.BindingModels.TasksCreateBindingModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                LOGICA.BL.Tasks tasks = new LOGICA.BL.Tasks();
+                tasks.CreateTasks(model.Title,
+                    model.Details,
+                    model.ExpirationDate,
+                    model.IsCompleted,
+                    model.Effort,
+                    model.RemainingWork,
+                    model.StateId,
+                    model.ActivityId,
+                    model.PriorityId,
+                    model.projectId);
+
+                return RedirectToAction("Index", new { projectId = model.projectId });
+            }
+
+            LOGICA.BL.States states = new LOGICA.BL.States();
+            ViewBag.States = states.GetStates();
+
+            LOGICA.BL.Activities activities = new LOGICA.BL.Activities();
+            ViewBag.Activities = activities.GetActivities();
+
+            LOGICA.BL.Priorities priorities = new LOGICA.BL.Priorities();
+            ViewBag.Priorities = priorities.GetPriorities();
+
+            return View(model);
         }
     }
 }

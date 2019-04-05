@@ -20,7 +20,7 @@ namespace ProjectMVC.LOGICA.Models.BindingModels
 
         [Display(Name = "IsCompleted")]
         [Required(ErrorMessage = " the field IsCompleted is requeried")]
-        public bool? IsCompleted { get; set; }
+        public bool IsCompleted { get; set; }
 
         [Display(Name = "Effort")]
         [Required(ErrorMessage = " the field Effort is requeried")]

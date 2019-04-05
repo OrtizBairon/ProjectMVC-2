@@ -28,7 +28,7 @@
             @Html.LabelFor(model => model.Active, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.EditorFor(model => model.Active)
+                    @Html.CheckBoxFor(model => model.Active)
                     @Html.ValidationMessageFor(model => model.Active, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -36,12 +36,12 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <button type="submit" value="" class="btn btn-primary"><i class="fas fa-save"></i></button>
+
+                @Html.ActionLink(" ", "Index", "Priorities", null, new { @class = "btn btn-outline-primary fas fa-arrow-circle-left" })
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
